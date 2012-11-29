@@ -1,0 +1,35 @@
+# Copyright SRI International 1999-2012, Marine Biological Laboratory 1998-2001, DoubleTwist Inc 1998-1999.  All Rights Reserved.
+#
+# Authors:
+#    Peter D. Karp
+#    Ingrid  Keseler
+#    Alexander  Shearer
+#    Carol  Fulcher
+#    Anamika  Kothari
+#    Suzanne  Paley
+#    Markus  Krummenacker
+#    Tomer  Altman
+#    Ian  Paulsen
+#    Amanda  Mackie
+#    Julio  Collado-Vides
+#    Cesar  Bonavides-Martinez
+#    Socorro  Gama-Castro
+#    Martin  Peralta
+#    Alberto  Santos-Zavaleta
+#    Verena  Weiss
+#    John L Ingraham
+#    Robert  Gunsalus
+#
+# Please see the license agreement regarding the use of and distribution of this file.
+# The format of this file is defined at http://bioinformatics.ai.sri.com/ptools/flatfile-format.html .
+#
+# Species: Escherichia coli K-12 substr. MG1655
+# Database: EcoCyc
+# Version: 16.1
+# File Name: genes.col
+# Date and time generated: June 15, 2012, 12:06:01
+#
+#							1	2	3	4	1	2	3	4
+UNIQUE-ID	BLATTNER-ID	NAME	PRODUCT-NAME	SWISS-PROT-ID	REPLICON	START-BASE	END-BASE	SYNONYMS	SYNONYMS	SYNONYMS	SYNONYMS	GENE-CLASS	GENE-CLASS	GENE-CLASS	GENE-CLASS
+G7462	b2834	tas	putative NAD(P)-linked reductase that acts in starvation-associated mutation	P0A9T4	#<TU0-13750 instance frame in ECOBASE[F] @ #x10093369c2>	2969619	2970659	ygdS					starvation	DNA related	metabolism
+EG11568	b0046	kefF	regulator of KefC-mediated potassium transport and quinone oxidoreductase	P0A754	#<TU0-12800 instance frame in ECOBASE[F] @ #x10089a17b2>	47246	47776	yabF				inhibition / activation of enzymes	transport	metabolism	 

@@ -1,0 +1,147 @@
+# Copyright SRI International 1999-2012, Marine Biological Laboratory 1998-2001, DoubleTwist Inc 1998-1999.  All Rights Reserved.
+#
+# Authors:
+#    Peter D. Karp
+#    Ingrid  Keseler
+#    Alexander  Shearer
+#    Carol  Fulcher
+#    Anamika  Kothari
+#    Suzanne  Paley
+#    Markus  Krummenacker
+#    Tomer  Altman
+#    Ian  Paulsen
+#    Amanda  Mackie
+#    Julio  Collado-Vides
+#    Cesar  Bonavides-Martinez
+#    Socorro  Gama-Castro
+#    Martin  Peralta
+#    Alberto  Santos-Zavaleta
+#    Verena  Weiss
+#    John L Ingraham
+#    Robert  Gunsalus
+#
+# Please see the license agreement regarding the use of and distribution of this file.
+# The format of this file is defined at http://bioinformatics.ai.sri.com/ptools/flatfile-format.html .
+#
+# Species: Escherichia coli K-12 substr. MG1655
+# Database: EcoCyc
+# Version: 16.1
+# File Name: regulons.dat
+# Date and time generated: June 15, 2012, 12:05:42
+#
+# Attributes:
+#    UNIQUE-ID
+#    TYPES
+#    COMMON-NAME
+#    ABBREV-NAME
+#    AROMATIC-RINGS
+#    ATOM-CHARGES
+#    CATALYZES
+#    CHEMICAL-FORMULA
+#    CITATIONS
+#    COFACTORS-OF
+#    COFACTORS-OR-PROSTHETIC-GROUPS-OF
+#    COMMENT
+#    COMMENT-INTERNAL
+#    COMPONENT-COEFFICIENTS
+#    COMPONENT-OF
+#    COMPONENTS
+#    CONSENSUS-SEQUENCE
+#    CREDITS
+#    DATA-SOURCE
+#    DBLINKS
+#    DNA-FOOTPRINT-SIZE
+#    DOCUMENTATION
+#    ENZYME-NOT-USED-IN
+#    FEATURES
+#    FUNCTIONAL-ASSIGNMENT-COMMENT
+#    FUNCTIONAL-ASSIGNMENT-STATUS
+#    GENE
+#    GO-TERMS
+#    HAS-NO-STRUCTURE?
+#    HIDE-SLOT?
+#    IN-MIXTURE
+#    INCHI
+#    INSTANCE-NAME-TEMPLATE
+#    INTERNALS-OF-GROUP
+#    ISOZYME-SEQUENCE-SIMILARITY
+#    LOCATIONS
+#    MEMBER-SORT-FN
+#    MODIFIED-FORM
+#    MOLECULAR-WEIGHT
+#    MOLECULAR-WEIGHT-EXP
+#    MOLECULAR-WEIGHT-KD
+#    MOLECULAR-WEIGHT-SEQ
+#    MONOISOTOPIC-MW
+#    N+1-NAME
+#    N-1-NAME
+#    N-NAME
+#    NEIDHARDT-SPOT-NUMBER
+#    PI
+#    PKA1
+#    PKA2
+#    PKA3
+#    PROMOTER-BOX-NAME-1
+#    PROMOTER-BOX-NAME-2
+#    PROSTHETIC-GROUPS-OF
+#    RADICAL-ATOMS
+#    RECOGNIZED-PROMOTERS
+#    REGULATED-BY
+#    REGULATES
+#    SMILES
+#    SPECIES
+#    SPLICE-FORM-INTRONS
+#    STRUCTURE-BONDS
+#    SUPERATOMS
+#    SYMMETRY
+#    SYNONYMS
+#    SYSTEMATIC-NAME
+#    TEMPLATE-FILE
+#    UNMODIFIED-FORM
+#
+UNIQUE-ID - BCCP-CPLX
+TYPES - BCCP-dimers
+TYPES - Protein-Complexes
+COMMON-NAME - biotin carboxyl carrier protein (dimer)
+CITATIONS - [10542197]
+CITATIONS - 14594796
+COMMENT - Biotin carboxyl carrier protein (BCCP) plays a central role
+/in the acetyl-CoA carboxylase complex. The overall carboxylase
+/reaction takes place in two distinct half-reactions.  BCCP, which
+/contains a biotinyl prosthetic group covalently attached to a specific
+/lysyl residue, is carboxylated in the first partial reaction.  In the
+/second partial reaction the carboxyl group is transferred to an
+/acceptor and BCCP is regenerated for further carboxylation |CITS:
+/[324999]|.
+/On the other hand, BCCP amino terminal is able to bind to DNA; this means, BCCP autoregulates its coding 
+/gene expression (the accBD operon) |CITS:[14594796]|.
+COMPONENT-OF - ACETYL-COA-CARBOXYLMULTI-CPLX
+COMPONENTS - BCCP-BIOTIN
+MODIFIED-FORM - BCCP-BIOTIN-CO2
+REGULATES - REG0-6019
+SYMMETRY - :INVERTED-REPEAT
+SYNONYMS - BCCP
+SYNONYMS - AccB
+TEMPLATE-FILE - /home/bolinas2/ecocyc/templates/new/carriers/accB.template
+//
+UNIQUE-ID - CPLX0-1242
+TYPES - Protein-Complexes
+COMMON-NAME - MazE-MazF antitoxin/toxin complex and DNA-binding transcriptional repressor
+CITATIONS - :EV-EXP:3278872660:pkarp
+COMMENT - MazF is a toxin that is counteracted by the MazE antitoxin |CITS: [8650219]|.  The mazEF system causes a "programmed cell death" response to stresses including starvation |CITS: [8650219]| and antibiotics |CITS: [11222603]|. The antitoxin, MazE, is subject to degradation by ClpP-ClpA protease complex and exhibits a short (30 minute) half life, whereas the toxin, MazF, is much more stable |CITS: [8650219]|.  
+/
+/The structure of the MazE-MazF complex is presented at 1.7 A resolution |CITS: [12718874]|.  The complex is hexameric and is comprised of a MazE homodimer sandwiched between MazF homodimers |CITS: [12718874]|.
+/
+/Review: |CITS: [12718870][21927020]|.
+COMPONENTS - CPLX0-1241
+COMPONENTS - CPLX0-841
+REGULATES - REG0-11224
+REGULATES - REG0-11223
+REGULATES - REG0-11220
+REGULATES - REG0-11219
+REGULATES - REG0-9488
+SPECIES - ECOLI
+SYMMETRY - :INVERTED-REPEAT
+SYNONYMS - MazE-MazF "addiction module"
+SYNONYMS - MazFE
+SYNONYMS - MazEF

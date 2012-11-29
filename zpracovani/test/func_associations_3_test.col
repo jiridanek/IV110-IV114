@@ -1,0 +1,7 @@
+# originally part of func-associations.col, look there for copyright info
+#
+#
+# Transcription Factor - Regulated Gene Pairs
+# Each entry is a tab-delimited list of the transcription factor's EcoCyc ID, name, the transcription factor gene, and the regulated gene
+EcoCycID	name	tfgene	rgene
+TORR-CPLX	TorR transcriptional dual regulator	b2834	b0046
