@@ -18,16 +18,32 @@ def read_col_file(path):
 def printout_genes_gff3(genescol_reader):
 	print '##gff-version   3'
 	for record in genescol_reader:
+		start = record['START-BASE']
+		end = record['END-BASE']
+		direction = '+'
+		#print >> sys.stderr, start, end
+		try:
+			if int(start) > int(end):
+				z = end
+				end = start
+				start = z
+				direction = '-'
+		except ValueError:
+			print >> sys.stderr,'invalid start or end values:', start, end
+			continue
+		name = record['BLATTNER-ID']
+		if name == '':
+			name = 'unnamed'
 		print '%(seqid)s\t%(source)s\t%(type)s\t%(start)s\t%(end)s\t%(score)s\t%(strand)s\t%(phase)s\t%(attributes)s' % {
-			'seqid'		:record['UNIQUE-ID'],
+			'seqid'		:'NC_000913',
 			'source'	:'EcoCyc',
 			'type'		:'gene',
-			'start'		:record['START-BASE'],
-			'end'		:record['END-BASE'],
+			'start'		:start,
+			'end'		:end,
 			'score'		:'.',
-			'strand'	:'+',
+			'strand'	:direction,
 			'phase'		:'.',
-			'attributes':'.'
+			'attributes':'ID=%(id)s;Name=%(name)s' % {'id': record['UNIQUE-ID'], 'name': name}
 		}
 
 if __name__ == '__main__':
