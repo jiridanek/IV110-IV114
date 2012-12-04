@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/fcgi"
 	"os"
+	"strings"
 )
 
 import (
@@ -26,7 +27,7 @@ func main () {
 	
 	genes := make(map[string]Gene)
 	
-	file, err := os.Open("genes.json")
+	file, err := os.Open("generegulation.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -47,8 +48,14 @@ func main () {
 	err = fcgi.Serve(nil, http.HandlerFunc ( func (w http.ResponseWriter, r *http.Request) {
 		log.Println("Got request")
 		r.ParseForm()
+		
+		// e.g. Note:ID=G6474
 		pgene := r.Form.Get("gene")
 		log.Println(pgene)
+		index := strings.LastIndex(pgene,"=")
+		if index != -1 {
+			pgene = pgene[index+1:]
+		}
 		
 		gene,found := genes[pgene]
 		if !found {
