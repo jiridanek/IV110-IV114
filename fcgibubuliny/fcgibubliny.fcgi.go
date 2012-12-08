@@ -17,15 +17,21 @@ import (
 
 type Gene struct {
 	ID string
-	Regulates []string
-	RegulatedBy []string
+	Start string
+	End string
+}
+
+type RegulatedGene struct {
+	ID string
+	Regulates []Gene
+	RegulatedBy []Gene
 }
 
 func main () {
 	log.SetPrefix("gpopup ")
 	log.Println("STARTED")
 	
-	genes := make(map[string]Gene)
+	genes := make(map[string]RegulatedGene)
 	
 	file, err := os.Open("generegulation.json")
 	if err != nil {
@@ -34,7 +40,7 @@ func main () {
 	decoder := json.NewDecoder(file)
 	
 	for {
-		var g Gene
+		var g RegulatedGene
 		if err := decoder.Decode(&g); err == io.EOF {
 			break
 		} else if err != nil {

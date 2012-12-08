@@ -58,6 +58,33 @@ def blattner2uniqueID(genescol_reader):
 if __name__ == '__main__':
 	print blattner2uniqueID(read_col_file('test/test_genes.col'))
 
+def uniqueID2position(genescol_reader):
+	u2p = {}
+	for record in genescol_reader:
+		start = record['START-BASE']
+		end = record['END-BASE']
+		try:
+			if int(start) > int(end):
+				z = end
+				end = start
+				start = z
+		except ValueError:
+			print >> sys.stderr,'invalid start or end values:', start, end
+			continue
+		u2p[record['UNIQUE-ID']] = (start, end)
+	return u2p
+
+if __name__ == '__main__':
+	print uniqueID2position(read_col_file('test/test_genes.col'))
+
+class Gene():
+	def __init__(self, ID, start, end):
+		self.ID = ID
+		self.Start = start
+		self.End = end
+	def toJSONobject(self):
+		return {'ID':self.ID, 'Start':self.Start, 'End':self.End}
+
 class Regulation():
 	"""
 	self.ID = ""
@@ -70,38 +97,42 @@ class Regulation():
 		self.RegulatedBy = regulatedby
 	def __str__(self):
 		return str(self.Regulates) + ' ' + str(self.RegulatedBy)
-	def toJSONarray(self):
-		return json.dumps([self.ID, self.Regulates, self.RegulatedBy])
 	def toJSONobject(self):
-		return json.dumps({'ID':self.ID, 'Regulates':self.Regulates, 'RegulatedBy':self.RegulatedBy})
+		jid = self.ID
+		jregulates = [x.toJSONobject() for x in self.Regulates]
+		jregulatedby = [x.toJSONobject() for x in self.RegulatedBy]
+		return {'ID': jid, 'Regulates': jregulates, 'RegulatedBy': jregulatedby}
 
-def associations(b2u, assoccol_reader):
+def append_to_regs(regs, gene):
+	if gene.ID not in regs:
+		regs[gene.ID] = Regulation(gene.ID, [], [])
+
+def associations(b2u, u2p, assoccol_reader):
 	regs = {}
 	for record in assoccol_reader:
 		tfgene = None
 		rgene = None
 		try:
-			tfgene = b2u[record['tfgene']]
-			rgene = b2u[record['rgene']]
+			tfgeneid = b2u[record['tfgene']]
+			rgeneid = b2u[record['rgene']]
+			tfgene = Gene(tfgeneid, u2p[tfgeneid][0], u2p[tfgeneid][1])
+			rgene = Gene(rgeneid, u2p[rgeneid][0], u2p[rgeneid][1])
 		except KeyError:
 			print >> sys.stderr, 'Cannot lookup gene in regulation', record['tfgene'], '->', record['rgene']
 			continue
-		if tfgene in regs:
-			regs[tfgene].Regulates.append(rgene)
-		else:
-			regs[tfgene] = Regulation(tfgene, [rgene], [])
-		if rgene in regs:
-			regs[rgene].RegulatedBy.append(tfgene)
-		else:
-			regs[rgene] = Regulation(rgene, [], [rgene])
+		append_to_regs(regs, tfgene)
+		append_to_regs(regs, rgene)
+		regs[tfgene.ID].Regulates.append(rgene)
+		regs[rgene.ID].RegulatedBy.append(tfgene)
 	return regs
 
 if __name__ == '__main__':
 	print
 	b2u = blattner2uniqueID(read_col_file('test/test_genes.col'))
-	a = associations(b2u, read_col_file('test/func_associations_3_test.col'))
+	u2p = uniqueID2position(read_col_file('test/test_genes.col'))
+	a = associations(b2u, u2p, read_col_file('test/func_associations_3_test.col'))
 	for key,value in a.items():
 		print key ,':', value
 	print
 	for key,value in a.items():
-		print key ,':', value.toJSONobject()
+		print key ,':', json.dumps(value.toJSONobject())
