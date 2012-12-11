@@ -17,8 +17,14 @@ reads data/genes.col and data/func_associations_3.col
 ###genes.gff
 >python genes.col_print_GFF.py > genes.gff
 
-genes_col.py je soubor který ty předchozí dva importují
+- genes_col.py je soubor který ty předchozí dva importují
 
+###regulators.gff & regulees.gff
+>python wiggle_prepare.py
+>R -f wiggle_create.r
+
+reads data/genes.col and data/func_associations_3.col,
+creates also intermediate files regulators.txt and regulees.txt
 
 #složka fcgibubliny
 
